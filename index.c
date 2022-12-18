@@ -6,13 +6,13 @@
 /*   By: aachaq <aachaq@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 23:49:03 by aachaq            #+#    #+#             */
-/*   Updated: 2022/10/05 01:02:56 by aachaq           ###   ########.fr       */
+/*   Updated: 2022/12/16 02:22:34 by aachaq           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    "push_swap.h"
+#include	"push_swap.h"
 
-int	plus_grande(int stack_a_data, t_list *list)
+int	get_index(int stack_a_data, t_list *list)
 {
 	int	i;
 
@@ -30,17 +30,19 @@ int	plus_grande(int stack_a_data, t_list *list)
 
 void	ft_indix(int argc, t_list *stack_a)
 {
-	int	n;
-	int	data_size;
-	t_list *list;
+	int		n;
+	int		data_size;
+	t_list	*list;
 
 	data_size = argc - 1;
 	list = stack_a;
 	while (list != NULL)
 	{
-		n = plus_grande(list->data, stack_a);
-		list->index = data_size - n - 1;
+		n = get_index(list->data, stack_a);
+		if (argc - 1 <= 5)
+			list->index = data_size - n;
+		else
+			list->index = data_size - n - 1;
 		list = list->next;
 	}
-	
 }

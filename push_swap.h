@@ -6,35 +6,32 @@
 /*   By: aachaq <aachaq@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 23:48:45 by aachaq            #+#    #+#             */
-/*   Updated: 2022/10/07 14:23:31 by aachaq           ###   ########.fr       */
+/*   Updated: 2022/12/16 03:15:46 by aachaq           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <limits.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <limits.h>
 
 typedef struct s_list
 {
-	int data;
-	int index;
-	struct s_list   *next;
-} t_list;
+	int				data;
+	int				index;
+	struct s_list	*next;
+}					t_list;
 
-typedef	struct s_struct
+typedef struct s_struct
 {
-	int min;
-	int max;
-	int mid;
-	int to_be_push;
-} t_struct;
-
-// void    print_stack(t_list *list);
-
+	int			min;
+	int			max;
+	int			mid;
+	int			to_be_push;
+}				t_struct;
 
 // push_swap.c
 void	chek_duplicate(int argc, char **argv);
@@ -43,8 +40,9 @@ void	sort_function(t_list **stack_a, t_list **stack_b, int argc);
 // push_swap_utile.c
 void	ft_putstr(char *str);
 int		ft_atoi(char *str);
-void	ft_error(unsigned n, int signe);
+void	ft_error(unsigned int n, int signe);
 int		min_index(t_list *list);
+void	ft_putstr_error(char *str);
 
 // push_swap_utile2.c
 int		stack_size(t_list *stack);
@@ -78,18 +76,21 @@ void	function_5(t_list **stack_a, t_list **stack_b);
 // big_sort_function.c
 void	function_big_sort(t_list **stack_a, t_list **stack_b);
 void	big_sort(t_list **stack_a, t_list **stack_b, int size);
-void	push_big_sort(t_list **stack_a, t_list **stack_b, int index, int size, int mid);
-void	big_push_to_stack_a(t_list **stack_a, t_list **stack_b, int big, int down_stk_a);
-void	push_big_sort_to_a(t_list **stack_a, t_list **stack_b, int big, int size);
+void	push_big_sort(t_list **stack_a, t_list **stack_b, int index, int *r1);
+void	big_push_to_stack_a(t_list **stack_a, t_list **stack_b,
+			int big, int down_stk_a);
+void	push_big_sort_to_a(t_list **stack_a, t_list **stack_b,
+			int big, int size);
 // big_sort_function2.c
 int		to_be_push(int size);
+int		*return1(int a, int b);
 // big_sort_utile.c
 void	push_to_b(t_list **stack_b, t_list **stack_a, int index, int mid);
 void	index__1(t_list **stack_a);
 int		find_index(t_list *list, int big);
 int		down_stack(t_list *list);
 // indix.c
-int		plus_grande(int stack_a_data, t_list *list);
+int		get_index(int stack_a_data, t_list *list);
 void	ft_indix(int argc, t_list *stack_a);
 // checker.c
 void	rrr_checker(t_list **list_a, t_list **list_b);
@@ -100,6 +101,7 @@ void	checker(int argc, char **argv);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 t_list	*create_stack2(int argc, char **argv);
 void	check_duplicate2(int argc, char **argv);
+void	check_error_checker(int argc, char **argv);
 
 // get_next_line.c
 int		ft_strchr(char *s);
@@ -111,4 +113,5 @@ int		ft_strlen(char *str);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(char *s);
 char	*ft_substr(char	*s, int start, int len);
-# endif
+
+#endif

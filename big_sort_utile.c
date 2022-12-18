@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   big_sort_utile.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aachaq <aachaq@student.1337.ma>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/11 21:37:22 by aachaq            #+#    #+#             */
+/*   Updated: 2022/12/11 21:37:22 by aachaq           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include	"push_swap.h"
 
 void	push_to_b(t_list **stack_b, t_list **stack_a, int index, int mid)
@@ -20,7 +32,7 @@ void	index__1(t_list **stack_a)
 	i = 0;
 	head = *stack_a;
 	top = *stack_a;
-	while(head)
+	while (head)
 	{
 		i++;
 		head = head->next;

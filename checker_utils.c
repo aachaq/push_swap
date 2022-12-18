@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aachaq <aachaq@student.1337.ma>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/11 21:37:14 by aachaq            #+#    #+#             */
+/*   Updated: 2022/12/11 21:37:14 by aachaq           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include    "push_swap.h"
+#include "push_swap.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -23,16 +34,16 @@ t_list	*create_stack2(int argc, char **argv)
 	t_list	*tmp;
 	t_list	*before;
 	t_list	*head;
-	
+
 	before = 0;
 	i = 1;
-	while(i < argc)
+	while (i < argc)
 	{
 		tmp = malloc(sizeof(t_list));
 		tmp->data = ft_atoi(argv[i]);
-		if(i == 1)
+		if (i == 1)
 			head = tmp;
-		if(before != 0)
+		if (before != 0)
 			before->next = tmp;
 		before = tmp;
 		i++;
@@ -49,16 +60,22 @@ void	check_duplicate2(int argc, char **argv)
 	i = argc - 1;
 	while (i)
 	{
-		j = argc-1;
+		j = argc - 1;
 		while (j)
 		{
 			if (ft_atoi(argv[i]) == ft_atoi(argv[j]) && i != j)
 			{
-				ft_putstr("error: duplicate\n");
-				exit(0);
+				ft_putstr_error("Error\n");
+				exit(1);
 			}
 			j--;
 		}
 		i--;
 	}
+}
+
+void	check_error_checker(int argc, char **argv)
+{
+	check_is_digit(argc, argv);
+	check_duplicate2(argc, argv);
 }

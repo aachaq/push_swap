@@ -6,11 +6,11 @@
 /*   By: aachaq <aachaq@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 01:18:06 by aachaq            #+#    #+#             */
-/*   Updated: 2022/10/03 20:00:48 by aachaq           ###   ########.fr       */
+/*   Updated: 2022/12/15 22:19:47 by aachaq           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"push_swap.h"
+#include "push_swap.h"
 
 void	check_is_digit(int argc, char **argv)
 {
@@ -21,10 +21,11 @@ void	check_is_digit(int argc, char **argv)
 		i = 0;
 		while (argv[argc][i])
 		{
-			if ((argv[argc][i] < '0' || argv[argc][i] > '9') && argv[argc][i] != '-' && argv[argc][i] != '+')
+			if ((argv[argc][i] < '0' || argv[argc][i] > '9')
+					&& argv[argc][i] != '-' && argv[argc][i] != '+')
 			{
-				ft_putstr("Error 'check is digit'\n");
-				exit (0);
+				ft_putstr_error("Error\n");
+				exit(1);
 			}
 			i++;
 		}
@@ -33,13 +34,16 @@ void	check_is_digit(int argc, char **argv)
 
 void	check_empty_arg(char **argv)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (argv[i])
 	{
 		if (argv[i][0] == '\0')
-			ft_putstr("Error 'empty arg'\n");
+		{
+			ft_putstr_error("Error\n");
+			exit(1);
+		}
 		i++;
 	}
 }
@@ -49,16 +53,16 @@ void	check_duplicate(int argc, char **argv)
 	int	i;
 	int	j;
 
-	i = argc-1;
+	i = argc - 1;
 	while (i)
 	{
-		j = argc-1;
+		j = argc - 1;
 		while (j)
 		{
 			if (ft_atoi(argv[i]) == ft_atoi(argv[j]) && i != j)
 			{
-				ft_putstr("Error 'duplicate'\n");
-				exit(0);
+				ft_putstr_error("Error\n");
+				exit(1);
 			}
 			j--;
 		}

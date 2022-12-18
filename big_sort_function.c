@@ -1,10 +1,27 @@
-#include    "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   big_sort_function.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aachaq <aachaq@student.1337.ma>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/11 21:37:28 by aachaq            #+#    #+#             */
+/*   Updated: 2022/12/11 21:37:28 by aachaq           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	push_big_sort(t_list **stack_a, t_list **stack_b, int index, int size, int mid)
+#include "push_swap.h"
+
+void	push_big_sort(t_list **stack_a, t_list **stack_b, int index, int *r1)
 {
+	int		size;
+	int		mid;
 	int		position;
 	t_list	*head;
 
+	size = r1[0];
+	mid = r1[1];
+	free(r1);
 	position = 0;
 	head = *stack_a;
 	while (head->index != index)
@@ -17,9 +34,9 @@ void	push_big_sort(t_list **stack_a, t_list **stack_b, int index, int size, int 
 		if (position > size / 2)
 			rr_a_b(&(*stack_a), 'a');
 		else if (position <= size / 2)
-			r(&(*stack_a), 'a');
+			r(stack_a, 'a');
 	}
-	push_to_b(&(*stack_b), &(*stack_a), index, mid);
+	push_to_b(stack_b, stack_a, index, mid);
 }
 
 void	big_sort(t_list **stack_a, t_list **stack_b, int size)
@@ -38,7 +55,8 @@ void	big_sort(t_list **stack_a, t_list **stack_b, int size)
 		{
 			if (head->index >= vars.min && head->index <= vars.max)
 			{
-				push_big_sort(&(*stack_a), &(*stack_b), head->index, size, vars.mid);
+				push_big_sort(&(*stack_a), &(*stack_b), head->index,
+					return1(size, vars.mid));
 				size--;
 				vars.to_be_push--;
 				head = *stack_a;
@@ -49,10 +67,11 @@ void	big_sort(t_list **stack_a, t_list **stack_b, int size)
 	function_5(&*(stack_a), &(*stack_b));
 }
 
-void	push_big_sort_to_a(t_list **stack_a, t_list **stack_b, int big, int size)
+void	push_big_sort_to_a(t_list **stack_a,
+		t_list **stack_b, int big, int size)
 {
-	int position;
-	t_list *head;
+	int		position;
+	t_list	*head;
 
 	position = 0;
 	head = *stack_b;
@@ -71,19 +90,17 @@ void	push_big_sort_to_a(t_list **stack_a, t_list **stack_b, int big, int size)
 	p(&(*stack_a), &(*stack_b), 'a');
 }
 
-void	big_push_to_stack_a(t_list **stack_a, t_list **stack_b, int big, int down_stk_a)
+void	big_push_to_stack_a(t_list **stack_a, t_list **stack_b,
+		int big, int down_stk_a)
 {
-	int size;
-	
+	int	size;
+
 	size = stack_size(*stack_b);
 	if (*stack_b)
 	{
-		
-
-		
 		if ((*stack_b)->index == big)
 			p(&(*stack_a), &(*stack_b), 'a');
-		else if((*stack_b)->index < big + 1 && (*stack_b)->index > down_stk_a)
+		else if ((*stack_b)->index < big + 1 && (*stack_b)->index > down_stk_a)
 		{
 			p(&(*stack_a), &(*stack_b), 'a');
 			r(&(*stack_a), 'a');

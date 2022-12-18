@@ -6,7 +6,7 @@
 /*   By: aachaq <aachaq@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 00:05:08 by aachaq            #+#    #+#             */
-/*   Updated: 2022/10/05 00:27:44 by aachaq           ###   ########.fr       */
+/*   Updated: 2022/12/15 22:29:06 by aachaq           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ void	ft_putstr(char *str)
 	}
 }
 
-void	ft_error(unsigned n, int signe)
+void	ft_error(unsigned int n, int signe)
 {
-	long	int	i;
+	long int	i;
 
 	i = (long int)n * signe;
 	if ((i > INT_MAX) || i < INT_MIN)
 	{
-		ft_putstr("Error: int_min_max\n");
-		exit (0);
+		ft_putstr_error("Error\n");
+		exit(1);
 	}
 }
 
@@ -78,4 +78,16 @@ int	min_index(t_list *list)
 		head = head->next;
 	}
 	return (i);
+}
+
+void	ft_putstr_error(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(2, &str[i], 1);
+		i++;
+	}
 }

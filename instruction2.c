@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instruction2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aachaq <aachaq@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aachaq <aachaq@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 00:48:18 by aachaq            #+#    #+#             */
-/*   Updated: 2022/10/03 19:05:22 by aachaq           ###   ########.fr       */
+/*   Updated: 2022/12/11 21:36:48 by aachaq           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ t_list	*rrr_a_b(t_list *list)
 
 void	rrr(t_list **list_a, t_list **list_b)
 {
-	
 	*list_a = rrr_a_b(*list_a);
 	*list_b = rrr_a_b(*list_b);
 	ft_putstr("rrr\n");
@@ -63,8 +62,8 @@ void	rrr(t_list **list_a, t_list **list_b)
 
 void	ss_a_b(t_list *list)
 {
-	int tmp;
-	
+	int	tmp;
+
 	if (!list || !list->next)
 		return ;
 	tmp = list->data;

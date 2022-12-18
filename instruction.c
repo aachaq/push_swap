@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   instruction.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aachaq <aachaq@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aachaq <aachaq@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:04:50 by aachaq            #+#    #+#             */
-/*   Updated: 2022/10/04 16:44:32 by aachaq           ###   ########.fr       */
+/*   Updated: 2022/12/11 21:38:50 by aachaq           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include	"push_swap.h"
+#include "push_swap.h"
 
 void	s(t_list **list, char s)
 {
 	t_list	*top;
 	t_list	*head;
-	
+
 	if (!*list || !(*list)->next)
 		return ;
 	head = *list;
@@ -40,15 +40,14 @@ void	ss(t_list *list_a, t_list *list_b)
 
 void	p(t_list **list_a, t_list **list_b, char p)
 {
-	t_list *tmp;
-	
+	t_list	*tmp;
+
 	tmp = *list_b;
 	if (*list_b)
 	{
 		*list_b = (*list_b)->next;
 		tmp->next = *list_a;
 		*list_a = tmp;
-		
 		if (p == 'a')
 			ft_putstr("pa\n");
 		else if (p == 'b')
@@ -97,4 +96,3 @@ void	rr_a_b(t_list **list, char rr)
 	else if (rr == 'b')
 		ft_putstr("rrb\n");
 }
-

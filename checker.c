@@ -1,4 +1,16 @@
-# include	"push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aachaq <aachaq@student.1337.ma>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/11 21:37:11 by aachaq            #+#    #+#             */
+/*   Updated: 2022/12/11 21:37:11 by aachaq           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
 
 void	rrr_checker(t_list **list_a, t_list **list_b)
 {
@@ -27,21 +39,19 @@ void	check_instrection(t_list **stack_a, t_list **stack_b, char *instr)
 	else if (ft_strncmp(instr, "rrr\n", 4) == 0)
 		rrr_checker(stack_a, stack_b);
 	else
-		ft_putstr("Error 'fault instrection'\n");
+		ft_putstr_error("Error\n");
 }
 
 int	check_sort_checker(t_list *stack_a)
 {
 	if (stack_a == NULL)
-	 	return (0);
+		return (0);
 	while (stack_a->next)
 	{
 		if (stack_a->data > stack_a->next->data)
 			return (0);
 		stack_a = stack_a->next;
-		
 	}
-	
 	return (1);
 }
 
@@ -57,9 +67,9 @@ void	checker_sort(t_list **stack_a, t_list **stack_b)
 		check_instrection(stack_a, stack_b, line);
 		line = get_next_line(0);
 		if (line == NULL)
-			break;
+			break ;
 		if (ft_strncmp(line, "\n", 1) == 0)
-			break;
+			break ;
 	}
 	i = check_sort_checker(*stack_a);
 	if (i == 1)
@@ -68,19 +78,14 @@ void	checker_sort(t_list **stack_a, t_list **stack_b)
 		write(1, "KO\n", 3);
 }
 
-void	check_error_checker(int argc, char **argv)
-{
-	check_is_digit(argc, argv);
-	check_duplicate2(argc, argv);
-}
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if(argc > 1)
+	if (argc > 1)
 	{
 		check_error_checker(argc, argv);
 		stack_a = create_stack2(argc, argv);
@@ -90,9 +95,3 @@ int main(int argc, char **argv)
 		return (0);
 	return (0);
 }
-
-// int main(int argc, char **argv)
-// {
-// 	checker(argc, argv);
-// 	return (0);
-// }
